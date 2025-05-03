@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.G - Artizanë të Dyerve Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+        }
+        
+        .door-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            perspective: 1000px;
+        }
+        
+        .door-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .door-card-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .door-card:hover .door-card-inner {
+            transform: rotateY(5deg);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-divider {
+            height: 100px;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(249,250,251,1) 100%);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .hover-underline-animation:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        
+        .hover-underline-animation:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Floating WhatsApp Button -->
+    <a href="#" class="fixed bottom-8 right-8 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg z-50 hover:bg-green-600 transition-all duration-300 animate-bounce">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                    <i class="fas fa-door-open text-white text-xl"></i>
+                </div>
+                <h1 class="title-font text-2xl font-bold text-gray-800">B.G <span class="gradient-text">Dyer</span></h1>
+            </div>
+            
+            <nav class="hidden lg:flex space-x-10">
+                <a href="#home" class="text-gray-800 font-medium hover-underline-animation">Kryefaqja</a>
+                <a href="#about" class="text-gray-800 font-medium hover-underline-animation">Rreth Nesh</a>
+                <a href="#products" class="text-gray-800 font-medium hover-underline-animation">Koleksioni</a>
+                <a href="#process" class="text-gray-800 font-medium hover-underline-animation">Procesi</a>
+                <a href="#gallery" class="text-gray-800 font-medium hover-underline-animation">Galeria</a>
+                <a href="#contact" class="text-gray-800 font-medium hover-underline-animation">Kontak</a>
+            </nav>
+            
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="tel:+383 45 991 992" class="flex items-center text-gray-800 hover:text-blue-600">
+                    <i class="fas fa-phone-alt mr-2"></i>
+                    <span>+383 45 991 992</span>
+                </a>
+            </div>
+            
+            <button class="lg:hidden text-gray-800 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="fixed inset-0 bg-black/90 z-50 hidden flex-col items-center justify-center space-y-8 text-white text-2xl">
+        <button class="absolute top-6 right-6 text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home" class="hover:text-blue-400 transition">Kryefaqja</a>
+        <a href="#about" class="hover:text-blue-400 transition">Rreth Nesh</a>
+        <a href="#products" class="hover:text-blue-400 transition">Koleksioni</a>
+        <a href="#process" class="hover:text-blue-400 transition">Procesi</a>
+        <a href="#gallery" class="hover:text-blue-400 transition">Galeria</a>
+        <a href="#contact" class="hover:text-blue-400 transition">Kontakt</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero flex items-center justify-center text-center text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="container px-6 z-10 animate__animated animate__fadeIn">
+            <h1 class="title-font text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Artizanat <span class="gradient-text">Premium</span> për Shtëpinë Tuaj
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
+                B.G kombinon traditën e punës së dorës me teknologjinë moderne për të krijuar dyera unike që transformojnë hapësirat tuaja.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#products" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Eksploro Koleksionin
+                </a>
+                <a href="#contact" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border-2 border-white text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    Konsultohu Falas
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white text-2xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold">RRETH NESH</span>
+                <h2 class="title-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">Krijimi i <span class="gradient-text">Përvojës</span> Perfekte</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fabrika B.G" class="rounded-xl shadow-2xl w-full">
+                    
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg w-3/4">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-award text-blue-600 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Përvojë 20+ Vjeçare</h4>
+                                <p class="text-gray-600">Në industrinë e dyerve</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-6">Përse të Zgjidhni <span class="gradient-text">B.G Dyer</span>?</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Në B.G, ne nuk prodhojmë vetëm dyera - ne krijojmë përvoja. Çdo derë është një përrallë e punës së dorës, e kujdesit dhe e pasionit tonë për detaje. Me më shumë se 20 vjet përvojë në treg, ne kemi përsosur artin e prodhimit të dyerve që kombinon qëndrueshmërinë, sigurinë dhe estetikën.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-leaf text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Materiale Ekologjike</h4>
+                                <p class="text-gray-600">Përdorim drurë të certifikuar dhe llaqe pa substanca të dëmshme për shëndetin tuaj.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-ruler-combined text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Dizajn i Personalizuar</h4>
+                                <p class="text-gray-600">Krijojmë dyera sipas matjeve dhe preferencave tuaja specifike.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-shield-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Garancion 10 Vjeçar</h4>
+                                <p class="text-gray-600">Sigurimi më i mirë i cilësisë në treg për paqen tuaj mendore.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold mb-2 animate-count" data-count="1500">0</div>
+                    <div class="text-xl">Projekte të Përfunduara</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold mb-2 animate-count" data-count="98">0</div>
+                    <div class="text-xl">Klientë të Kënaqur (%)</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold mb-2 animate-count" data-count="24">0</div>
+                    <div class="text-xl">Vite Përvojë</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl md:text-5xl font-bold mb-2 animate-count" data-count="12">0</div>
+                    <div class="text-xl">Çmime dhe Njohje</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold">KOLEKSIONI YNË</span>
+                <h2 class="title-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">Dyer që <span class="gradient-text">Transformojnë</span> Hapësirat</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-6">
+                    Eksploroni koleksionin tonë të dyerve të dizajnuara me pasion dhe të prodhuara me kujdes ekstrem për detaje.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="door-card group">
+                    <div class="door-card-inner">
+                        <div class="relative overflow-hidden rounded-xl h-96">
+                            <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dera moderne" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">Dyer Moderne të Hyrjes</h3>
+                                <p class="text-gray-200 mb-4">Kombinim i përsosur i sigurisë dhe elegancës</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-white font-bold text-xl">Nga 500€</span>
+                                    <button class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-full transition duration-300 transform group-hover:scale-110">
+                                        Shiko Detaje
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="door-card group">
+                    <div class="door-card-inner">
+                        <div class="relative overflow-hidden rounded-xl h-96">
+                            <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dera druri" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">Dyer Druri të Forcësuara</h3>
+                                <p class="text-gray-200 mb-4">Natyra në formën e saj më të pastër</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-white font-bold text-xl">Nga 350€</span>
+                                    <button class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-full transition duration-300 transform group-hover:scale-110">
+                                        Shiko Detaje
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="door-card group">
+                    <div class="door-card-inner">
+                        <div class="relative overflow-hidden rounded-xl h-96">
+                            <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dera xhami" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6">
+                                <h3 class="text-2xl font-bold text-white mb-2">Dyer me Xham</h3>
+                                <p class="text-gray-200 mb-4">Drita dhe hapësirë në harmoni të përsosur</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-white font-bold text-xl">Nga 450€</span>
+                                    <button class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-4 py-2 rounded-full transition duration-300 transform group-hover:scale-110">
+                                        Shiko Detaje
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#gallery" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Shiko Të Gjitha Modelet
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold">PROCESI YNË</span>
+                <h2 class="title-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">Artizani në <span class="gradient-text">Çdo Hap</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-6">
+                    Nga ideja në realizim, çdo derë kalon nëpër një proces rigoroze kontrolli cilësie dhe përpunimi me kujdes ekstrem.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center p-6 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl transition duration-300">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-2xl">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Konsultimi</h3>
+                    <p class="text-gray-600">
+                        Diskutoni nevojat tuaja me ekspertët tanë dhe merrni këshilla të personalizuara.
+                    </p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center p-6 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl transition duration-300">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-2xl">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Dizajni</h3>
+                    <p class="text-gray-600">
+                        Krijimi i vizualizimeve 3D dhe përshtatja e dizajnit sipas preferencave tuaja.
+                    </p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center p-6 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl transition duration-300">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-2xl">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Prodhimi</h3>
+                    <p class="text-gray-600">
+                        Përpunimi me mjeshtëri duke përdorur materiale premium dhe teknologji të avancuar.
+                    </p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="text-center p-6 rounded-xl bg-gray-50 hover:bg-white hover:shadow-xl transition duration-300">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 text-2xl">
+                        4
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Instalimi</h3>
+                    <p class="text-gray-600">
+                        Montimi profesional nga ekipi ynë me garanci të plotë për punën e kryer.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section -->
+    <section class="py-32 bg-gray-800 text-white parallax" style="background-image: url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="title-font text-4xl md:text-5xl font-bold mb-6">Dyer që <span class="gradient-text">Tregojnë Histori</span></h2>
+            <p class="text-xl max-w-3xl mx-auto mb-10">
+                Çdo derë që prodhojmë mbart një pjesë të pasionit tonë dhe kujdesit për detaje që e bën të veçantë.
+            </p>
+            <a href="#contact" class="inline-block bg-white hover:bg-gray-100 text-gray-800 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Bëni Një Porosi Tani
+            </a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold">GALERIA</span>
+                <h2 class="title-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">Punimet <span class="gradient-text">Tona</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-6">
+                    Eksploroni disa nga projektet tona më të fundit dhe inspiruheni për hapësirën tuaj të ëndrrave.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="#" class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://www.glenviewdoors.com/images/gallery/modern-door-1.jpg" alt="Dera moderne" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://www.glenviewdoors.com/images/gallery/modern-door-2.jpg" alt="Dera moderne druri" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://www.glenviewdoors.com/images/gallery/modern-door-3.jpg" alt="Dera xhami moderne" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://www.glenviewdoors.com/images/gallery/modern-door-4.jpg" alt="Dera klasike" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </a>
+            </div>
+            
+                <a href="#" class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://images.unsplash.com/photo-1600566752227-8cf6a357b0eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dyer klasike" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-xl h-64">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Dyer klasike" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold">KLIENTËT TANË</span>
+                <h2 class="title-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">Çfarë Thonë <span class="gradient-text">Klientët</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Klient" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Artan Hoxha</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Dyer të shkëlqyera dhe instalim profesional. Kam blerë dyera për të gjithë shtëpinë time nga B.G dhe jam shumë i kënaqur me cilësinë dhe shërbimin. Ekipi është shumë profesional dhe i përkushtuar."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Klient" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Elona Shehu</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Kompania B.G na ka instaluar dyera të jashtme për zyrën tonë. Cilësia e materialeve dhe përfundimi i punës ishin të përsosura. Përveç cilësisë, çmimet janë shumë konkurruese. Do të rekomandoj me siguri!"
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Klient" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Bardh Krasniqi</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Pasi kemi përdorur shërbimet e B.G për disa projekte, mund të them se janë një nga kompanitë më profesionale në këtë fushë. Cilësia e dyerve është e jashtëzakonshme dhe mbështetja pas-shitje është e shkëlqyer."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="title-font text-3xl md:text-4xl font-bold mb-6">Gati për të Transformuar Shtëpinë Tuaj?</h2>
+            <p class="text-xl max-w-2xl mx-auto mb-8">
+                Kontaktoni ekspertët tanë sot për një konsultim falas dhe një kuotim të personalizuar.
+            </p>
+            <a href="#contact" class="inline-block bg-white hover:bg-gray-100 text-gray-800 font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Na Kontaktoni Tani
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold">KONTAKTO</span>
+                <h2 class="title-font text-4xl md:text-5xl font-bold text-gray-800 mb-4">Na <span class="gradient-text">Gjeni</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-6">
+                    Jemi të gatshëm t'ju përgjigjemi çdo pyetjeje dhe t'ju ndihmojmë në zgjedhjen e zgjidhjes perfekte për nevojat tuaja.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Emri i Plotë *</label>
+                                <input type="text" id="name" class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email *</label>
+                                <input type="email" id="email" class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Numri i Telefonit</label>
+                            <input type="tel" id="phone" class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subjekti</label>
+                            <select id="subject" class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                                <option>Informacion për produkte</option>
+                                <option>Kërkesë për kuotim</option>
+                                <option>Mbështetje teknike</option>
+                                <option>Pyetje të përgjithshme</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mesazhi *</label>
+                            <textarea id="message" rows="5" class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg">
+                            Dërgo Mesazhin
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Informacionet e Kontaktit</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Adresa</h4>
+                                    <p class="text-gray-600">Rruga "Bedri Berisha", Nr. 45, Prishtine, Kosove</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Telefoni</h4>
+                                    <p class="text-gray-600">+383 45 991 992</p>
+                                    <p class="text-gray-600">+383 45 991 911 (WhatsApp)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Email</h4>
+                                    <p class="text-gray-600">info@bg-dyer.com</p>
+                                    <p class="text-gray-600">shitje@bg-dyer.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Orari i Punës</h4>
+                                    <p class="text-gray-600">E Hënë - E Premte: 08:00 - 17:00</p>
+                                    <p class="text-gray-600">E Shtunë: 09:00 - 14:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-10">
+                            <h4 class="font-bold text-gray-800 mb-4">Na Ndiqni</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition duration-300">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://maps.app.goo.gl/Z7533YoGpM43oySS7" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-door-open text-white"></i>
+                        </div>
+                        <h3 class="title-font text-2xl font-bold">B.G <span class="gradient-text">Dyer</span></h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Artizanat premium të dyerve për shtëpi dhe biznese. Cilësi e pa kompromis dhe shërbim i personalizuar.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Linqe të Shpejta</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Kryefaqja</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">Rreth Nesh</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition">Koleksioni</a></li>
+                        <li><a href="#process" class="text-gray-400 hover:text-white transition">Procesi</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Galeria</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Shërbimet</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Dyer të Hyrjes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Dyer të Brendshme</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Dyer Druri</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Dyer me Xham</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Dyer Garazhi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Dyer të Personalizuara</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Lajme dhe Oferta</h4>
+                    <p class="text-gray-400 mb-4">
+                        Regjistrohu për të marrë informacion më të fundit dhe ofertat tona speciale direkt në emailin tuaj.
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="Emaili juaj" class="px-4 py-3 rounded-l-lg focus:outline-none text-gray-900 w-full">
+                        <button class="bg-blue-600 hover:bg-blue-700 px-4 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 B.G Dyer. Të gjitha të drejtat e rezervuara.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('header button.lg\\:hidden');
+        const mobileMenu = document.querySelector('.fixed.inset-0');
+        const mobileMenuClose = mobileMenu.querySelector('button');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        });
+        
+        // Animate counter
+        function animateCounters() {
+            const counters = document.querySelectorAll('.animate-count');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('animate-count')) {
+                        animateCounters();
+                    }
+                    
+                    if (entry.target.classList.contains('animate__animated')) {
+                        entry.target.style.opacity = 1;
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements
+        document.querySelectorAll('.animate-count, .animate__animated').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-lg');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.remove('shadow-lg');
+                header.classList.add('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
